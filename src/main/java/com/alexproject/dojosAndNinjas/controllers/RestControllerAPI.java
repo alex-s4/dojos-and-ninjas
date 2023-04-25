@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alexproject.dojosAndNinjas.models.Dojo;
@@ -39,17 +40,11 @@ public class RestControllerAPI {
 		return dserv.findDojoById(dojoId);	
 	}
 	
-//	// Update
-//	@PutMapping("/api/dojos/edit/{dojoId}")
-//	public Dojo editDojo(@PathVariable Long dojoId, Dojo updatedDojo) {
-//		Dojo existingDojo = dserv.findDojoById(dojoId).g;
-//		Dojo newDojo = dserv.updateDojo(updatedDojo);
-//		if (existingDojo!=null) {
-//			System.out.println(existingDojo.getId());
-//			return dserv.updateDojo(newDojo);
-//		}
-//		return null;
-//	}
+	// Update
+	@PutMapping("/api/dojos/edit/{id}")
+	public Dojo editDojo(@PathVariable Long id, Dojo updatedDojo) {
+		return dserv.updateDojo(updatedDojo);
+	}
 	
 	// Delete
 	@DeleteMapping("/api/dojos/delete/{dojoId}")
@@ -76,11 +71,11 @@ public class RestControllerAPI {
 		return nserv.findNinjaById(ninjaId);	
 	}
 	
-//	// Update
-//	@PutMapping("/api/ninjas/{ninjaId}/edit")
-//	public Ninja updateNinja(@PathVariable Long ninjaId, Ninja updatedNinja) {
-//		return nserv.updateNinja(updatedNinja);
-//	}
+	// Update
+	@PutMapping("/api/ninjas/{id}/edit")
+	public Ninja updateNinja(@PathVariable Long id, Ninja updatedNinja) {
+		return nserv.updateNinja(updatedNinja);
+	}
 	
 	// Delete
 	@DeleteMapping("/api/ninjas/{ninjaId}/delete")
